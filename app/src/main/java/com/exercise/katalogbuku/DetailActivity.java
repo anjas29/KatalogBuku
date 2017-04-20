@@ -15,7 +15,7 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         //mereferensikan komponen pada layout
-        judulBukuView = (TextView)findViewById(R.id.listBukuView);
+        judulBukuView = (TextView)findViewById(R.id.judulBukuView);
         pengarangView = (TextView)findViewById(R.id.pengarangView);
         penerbitView = (TextView)findViewById(R.id.penerbitView);
         deskripsiView = (TextView)findViewById(R.id.deskripsiView);

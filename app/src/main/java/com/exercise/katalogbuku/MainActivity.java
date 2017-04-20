@@ -57,17 +57,16 @@ public class MainActivity extends AppCompatActivity {
                         String deskripsi = object.getString("deskripsi");
 
                         data.add(new Buku(id, judul_buku, pengarang, penerbit, deskripsi));
-
-                        //Menambahkan data kedalam RecyclerView
-                        LinearLayoutManager layoutManager= new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
-                        listBuku.setHasFixedSize(true);
-
-                        listBuku.setLayoutManager(layoutManager);
-
-                        ListBukuAdapter adapter = new ListBukuAdapter(getApplicationContext(), data);
-
-                        listBuku.setAdapter(adapter);
                     }
+                    //Menambahkan data kedalam RecyclerView
+                    LinearLayoutManager layoutManager= new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+                    listBuku.setHasFixedSize(true);
+
+                    listBuku.setLayoutManager(layoutManager);
+
+                    ListBukuAdapter adapter = new ListBukuAdapter(getApplicationContext(), data);
+
+                    listBuku.setAdapter(adapter);
 
 
                 } catch (JSONException e) {
