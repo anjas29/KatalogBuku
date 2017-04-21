@@ -1,18 +1,24 @@
 package com.exercise.katalogbuku;
 
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.exercise.katalogbuku.adapter.ListBukuAdapter;
 import com.exercise.katalogbuku.object.Buku;
 
@@ -25,6 +31,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     RecyclerView listBuku;
     ArrayList<Buku> data;
+    ListBukuAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +48,9 @@ public class MainActivity extends AppCompatActivity {
     public void getData(){
         JsonArrayRequest jsonObjReq = new JsonArrayRequest(Request.Method.GET,
                 "http://tokobuku-stembayo.esy.es/list_buku.php", new Response.Listener<JSONArray>() {
-
             @Override
             public void onResponse(JSONArray response) {
                 Log.d("DEBUGS", response.toString());
-
                 try {
                     data = new ArrayList<Buku>();
                     for (int i=0; i<response.length();i++){
@@ -64,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
                     listBuku.setLayoutManager(layoutManager);
 
-                    ListBukuAdapter adapter = new ListBukuAdapter(getApplicationContext(), data);
+                    adapter = new ListBukuAdapter(MainActivity.this, data);
 
                     listBuku.setAdapter(adapter);
 
@@ -85,4 +90,26 @@ public class MainActivity extends AppCompatActivity {
         AppController.getInstance().addToRequestQueue(jsonObjReq);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.menu, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.menu_search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.filter(newText);
+                return true;
+            }
+        });
+
+        return true;
+    }
 }

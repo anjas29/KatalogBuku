@@ -34,4 +34,7 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.0.0'
     compile 'com.android.support:support-vector-drawable:25.3.1'
     testCompile 'junit:junit:4.12'
+    compile 'dev.dworks.libs:volleyplus:+'
+
+    compile 'com.github.wrdlbrnft:sorted-list-adapter:0.2.0.1'
 }

@@ -95,9 +95,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp">
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
             <RadioButton
                 android:id="@+id/lakiRadioView"
                 android:layout_width="wrap_content"
@@ -107,7 +104,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:checked="true"
                 android:layout_marginStart="8dp"
-                tools:layout_editor_absoluteY="0dp" />
+                tools:layout_editor_absoluteY="321dp" />
 
             <RadioButton
                 android:id="@+id/perempuanRadioView"
@@ -118,7 +115,6 @@
                 android:layout_marginLeft="8dp"
                 app:layout_constraintBaseline_toBaselineOf="@+id/lakiRadioView"
                 android:layout_marginStart="8dp" />
-        </android.support.constraint.ConstraintLayout>
     </RadioGroup>
 
     <android.support.design.widget.TextInputLayout
@@ -164,7 +160,9 @@
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent">
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp">
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"

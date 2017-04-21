@@ -69,7 +69,7 @@ public class RegisterActivity extends AppCompatActivity {
     public void postRegister(){
         //Nama variabel yang dibutuhkan
         final String namaMember, email, password, alamat, jenisKelamin;
-
+        
         namaMember = namaMemberView.getText().toString();
         email = emailView.getText().toString();
         password = passwordView.getText().toString();

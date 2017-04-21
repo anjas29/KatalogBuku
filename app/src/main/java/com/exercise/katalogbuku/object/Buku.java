@@ -1,10 +1,13 @@
 package com.exercise.katalogbuku.object;
 
+
+import com.github.wrdlbrnft.sortedlistadapter.SortedListAdapter;
+
 /**
  * Created by anjas on 07/04/17.
  */
 
-public class Buku {
+public class Buku implements SortedListAdapter.ViewModel{
     private int id;
     private String judul_buku;
     private String pengarang;
